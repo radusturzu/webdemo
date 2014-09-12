@@ -1,0 +1,62 @@
+$(document).ready( function() {
+	
+	$( "#mybutton" ).button();
+	$( "#radioset" ).buttonset();
+	$( "#country" ).selectmenu();
+
+		
+	$(".post").on("mouseover", function() {
+	    
+		$(".add-entry").slideToggle();
+		
+	});
+	
+	
+	$("#threadinnercontainer>button").one("mouseenter", function() {
+			
+			$(this).fadeOut();
+			$(this).fadeOut().parent().find("#threadform").delay(500).fadeIn();
+			
+	});
+
+	
+	
+	$(".tg tr").hover(function () {
+		$( this ).children("td").toggleClass( "highlight" );
+		//alert("test");
+	});
+	
+	$(".metanav a").hover(function () {
+		$( this ).toggleClass( "highlight_metanav" );
+		
+	});
+	
+
+	
+	// for tables you must use td !!!
+	$('.posttable>tbody tr').hover(function(){
+			// Hover over code
+			var title = $(this).children(".hidden_tooltip").text();
+			//$(this).data('tipText', title).removeAttr('title');
+			$('<p class="ui-widget-content" id="tooltip"></p>')
+			.text(title)
+			.appendTo('body')
+			.fadeIn('slow');
+			
+	}, function() {
+			// Hover out code
+			//$(this).attr('title', $(this).data('tipText'));
+			$('#tooltip').remove();
+	}).mousemove(function(e) {
+			var mousex = e.pageX + 20; //Get X coordinates
+			var mousey = e.pageY + 10; //Get Y coordinates
+			$('#tooltip')
+			.css({ top: mousey, left: mousex })
+	});
+	
+	$(document).ready( function() {
+
+});
+
+	
+});

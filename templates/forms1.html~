@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Forms 1</h2></br>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  
+  {% from "_formhelpers.html" import render_field %}
+<fieldset id ="Register" class=ui-widget-content >
+  <form method=post action="/forms1">
+  <dl>
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+	{{ render_field(form.location) }}
+	{{ render_field(form.birthdate) }}
+	{{ render_field(form.country) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p><input type=submit value=Submit id="mybutton">
+</form>
+</fieldset>
+
+<script src="{{ url_for('static', filename='form.js') }}"></script>
+
+{% endblock %}
+
+

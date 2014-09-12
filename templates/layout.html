@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+<title>Flaskr</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery-ui.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='extra-for-jquery.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table.css') }}">
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.js" ></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='table.js') }}"></script>
+<script src="{{ url_for('static', filename='application.js') }}"></script>
+<script src="{{ url_for('static', filename='jquery-ui.js') }}"></script>
+
+
+</head>
+
+
+<div class=page>
+  <h1>Flaskr</h1>
+  
+ 
+
+<form style="margin-top: 1em;">
+	<div id="radioset">
+	{% if not session.logged_in %}
+		<input type="radio" id="radio1" name="radio"><label for="radio1"><a href="{{ url_for('login') }}">log in</a></label>
+	{% else %}
+		<input type="radio" id="radio2" name="radio"><label for="radio2"><a href="{{ url_for('logout') }}">log out</a></label>
+	{% endif %}
+		<input type="radio" id="radio5" name="radio"><label for="radio5"><a href="{{ url_for('ajax') }}">ajax</a></label>
+		<input type="radio" id="radio6" name="radio"><label for="radio6"><a href="{{ url_for('forms1') }}">forms1</a></label>
+
+	</div>
+</form>
+
+
+  {% for message in get_flashed_messages() %}
+  
+	<div class="ui-widget">
+	<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+		<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+		{{ message }}</p>
+	</div>
+	</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+
+
+</div>
+

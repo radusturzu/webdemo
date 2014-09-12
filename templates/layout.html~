@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+<title>Flaskr</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery-ui.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table.css') }}">
+</head>
+
+
+<div class=page>
+  <h1>Flaskr</h1>
+  
+ 
+
+<form style="margin-top: 1em;">
+	<div id="radioset">
+	{% if not session.logged_in %}
+		<input type="radio" id="radio1" name="radio"><label for="radio1"><a href="{{ url_for('login') }}">log in</a></label>
+	{% else %}
+		<input type="radio" id="radio2" name="radio"><label for="radio2"><a href="{{ url_for('logout') }}">log out</a></label>
+	{% endif %}
+		<input type="radio" id="radio3" name="radio"><label for="radio3"><a href="{{ url_for('register') }}">register</a></label>
+		<input type="radio" id="radio4" name="radio"><label for="radio4"><a href="{{ url_for('show_threads') }}">threads</a></label>
+		<input type="radio" id="radio5" name="radio"><label for="radio5"><a href="{{ url_for('ajax') }}">ajax</a></label>
+		<input type="radio" id="radio6" name="radio"><label for="radio6"><a href="{{ url_for('forms1') }}">ajax</a></label>
+
+	</div>
+</form>
+
+
+  {% for message in get_flashed_messages() %}
+  
+	<div class="ui-widget">
+	<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+		<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+		{{ message }}</p>
+	</div>
+	</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+  
+
+<script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='table.js') }}"></script>
+
+<script src="{{ url_for('static', filename='application.js') }}"></script>
+
+<script src="{{ url_for('static', filename='jquery-ui.js') }}"></script>
+
+<script>
+
+</script>
+</div>
+
